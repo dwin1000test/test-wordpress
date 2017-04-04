@@ -31,6 +31,9 @@ dependencies:
     
     # Generate `wp-config.php` file
     - ./wp-cli.phar core config --allow-root --dbname=wordpress --dbuser=ubuntu --dbhost=localhost --path=wordpress
+    # the wp-cli breaks if you don't use loopback IP address
+    - sed -i.bak s/localhost/127.0.0.1/g wordpress/wp-config.php 
+
     
     # Install WordPress
     - sudo ./wp-cli.phar core install --allow-root --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://wppusher-plugin.dev:8080 --title=WordPress --path=wordpress
@@ -55,6 +58,7 @@ test:
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
     - ./wp-cli.phar plugin list --path=wordpress
+    - ./wp-cli.phar db check --path=wordpress
     
     # Finally, run our Behat features
     #- vendor/bin/behat
