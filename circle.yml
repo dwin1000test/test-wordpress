@@ -11,8 +11,8 @@ dependencies:
   pre:
    
     # Install php mysql extension
-    - sudo gpg --recv-keys 5072E1F5
-    - sudo gpg --export 5072E1F5 > 5072E1F5.gpg
+    - gpg --recv-keys 5072E1F5
+    - gpg --export 5072E1F5 > 5072E1F5.gpg
     - sudo mv 5072E1F5.gpg /etc/apt/trusted.gpg.d/
     - sudo apt-get update
     - sudo apt-get install php5-mysql
