@@ -46,7 +46,7 @@ dependencies:
     #- sudo cp wppusher-plugin/apache-ci.conf /etc/apache2/sites-available
     
     # Use `a2ensite` to create a symlink for the config
-    - sudo a2ensite apache-ci.conf
+    #- sudo a2ensite apache-ci.conf
     
     # Restart the Apache server
     - sudo service apache2 restart
