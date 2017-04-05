@@ -61,8 +61,10 @@ test:
     - php composer.phar install
 
     # Install InSpec
-    - wget https://packages.chef.io/files/stable/inspec/1.19.1/ubuntu/14.04/inspec_1.19.1-1_amd64.deb
-    - sudo dpkg -i inspec_1.19.1-1_amd64.deb
+    - apt-get -y install ruby ruby-dev gcc make
+    - gem install inspec
+    #- wget https://packages.chef.io/files/stable/inspec/1.19.1/ubuntu/14.04/inspec_1.19.1-1_amd64.deb
+    #- sudo dpkg -i inspec_1.19.1-1_amd64.deb
 
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
