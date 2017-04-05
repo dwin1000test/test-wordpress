@@ -55,10 +55,21 @@ dependencies:
     - sudo service apache2 restart
 
 test:
+  pre:
+    - git clone git://github.com/Behat/Behat.git && cd Behat
+    - wget -nc https://getcomposer.org/composer.phar
+    - php composer.phar install
+
+    # Install InSpec
+    - wget https://packages.chef.io/files/stable/inspec/1.19.1/ubuntu/14.04/inspec_1.19.1-1_amd64.deb
+    - sudo dpkg -i inspec_1.19.1-1_amd64.deb
+
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
     - ./wp-cli.phar plugin list --path=wordpress
     - ./wp-cli.phar db check --path=wordpress
-    
+   
+    # Run InSpec tests
+    = inspec exec tests
     # Finally, run our Behat features
     #- vendor/bin/behat
