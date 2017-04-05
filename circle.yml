@@ -70,6 +70,6 @@ test:
     - ./wp-cli.phar db check --path=wordpress
    
     # Run InSpec tests
-    = inspec exec tests
+    - inspec exec tests
     # Finally, run our Behat features
     #- vendor/bin/behat
